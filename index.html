@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="system/style/browser.css">
+	<script src="system/script/jquery.min.js"></script>
+	<script src="system/script/browser.js"></script>
+</head>
+<body>
+	<div id="main">
+		<header>
+			<div id="input">
+				<button id="btn_pre" class="nav"><</button>
+				<button id="btn_nex" class="nav">></button>
+				<input type="text" id="url" placeholder="Search or Enter URL">
+				<button id="btn_rl" class="nav">&#8635;</button>
+				<button class="go">Go</button>
+				<button id="btn_add_t" class="nav">&#8801;</button>
+			</div>
+		</header>
+		<div id="container">
+			<iframe src="homepage.html" frameborder="0" id="b_iframe" name="b_iframe" mozbrowser></iframe>
+		</div>
+		<div id="loading"></div>
+	</div>
+	<div id="sidebar">
+		<ul class="list">
+			<li id="s_sp">Start Page</li>
+			<li id="s_ab">Add Bookmark</li>
+			<li id="s_bo">Bookmarks</li>
+			<li id="s_hi">History</li>
+			<li id="s_pr">Preferences</li>
+			<!--<li id="s_nm">Night Mode<span>OFF</span></li>-->
+			<li id="s_fm">Fullscreen Mode<span>OFF</span></li>
+		</ul>
+	</div>
+	<div id="hist">
+		<strong><p>History<button id="close">x</button></p></strong>
+		<ul class="list"></ul>
+	</div>
+	<div id="loading-screen">
+		Browser
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+#hist{
+	background: #222;
+	color: #fff;
+}
+#hist #close{
+	color: #fff;
+}
+#hist #close:active{
+	color: #48b;
+}
+#sidebar{
+	background: #222;
+	color: #fff;
+}
+ul.list li{
+	border-bottom: 1px solid #555;
+}
+ul.list li:active{
+	background: #49b;
+}
+header{
+	background: #000;
+	border-bottom: 1px solid #333;
+}
+header input{
+	background: #666;
+	border:1px solid #555;
+	color: #ccc;
+}
+header input:focus{
+	border:1px solid #01a2e8;
+}
+header button{
+	color: #bbb;
+}
+header button.nav:active{
+	color: #01a2e8;
+}
+header button.go{
+	background: #111;
+	border: 1px solid #333;
+}
+header button.go:active{
+	background: #49b;
+	color: #fff;
+	border: 1px solid #09d;
+}
+#container iframe{
+	background: #222;
+}
+#start_page{
+	background: #444;
+	color: #fff;
+}

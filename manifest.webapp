@@ -1,0 +1,21 @@
+{
+  "version": "0.1",
+  "name": "Browser",
+  "description": "Simple Browser",
+  "launch_path": "/index.html",
+  "icons": {
+    "16": "/icon-128.png",
+    "48": "/icon-128.png",
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Base"
+  },
+  "default_locale": "en",
+  "type": "privileged",
+  "permissions": {
+    "browser": {
+      "description": "Browser API"
+    }
+  }
+}
