@@ -1,7 +1,7 @@
 *{
 	margin:0;
 	padding:0;
-	font-family: "Open Sans",sans-serif;
+	font-family: sans-serif;
 	cursor: default;
 }
 html,body{
@@ -10,7 +10,6 @@ html,body{
 	overflow: hidden;
 }
 #loading-screen{
-	display: none;
 	z-index: 25;
 	position: absolute;
 	top:0;
@@ -156,9 +155,9 @@ header button.go{
 header button.go:active{
 	background: #49b;
 	color: #fff;
-	border: 1px solid #09d;
+	border: 1px solid #38a;
 }
-header button#btn_rl{
+header button#stop{
 	position: relative;
 	left: -24px;
 	margin-right: -24px;

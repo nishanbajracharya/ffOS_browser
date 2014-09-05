@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# v0.1
+/index.html
+/homepage.html
+/icon-128.png
+/system/style/browser.css
+/system/style/startpage.css
+/system/style/browser_nm.css
+/system/style/startpage_nm.css
+/system/script/browser.js
+/system/script/jquery.min.js
+/system/script/jquery.min.map

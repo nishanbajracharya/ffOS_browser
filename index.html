@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="offline.appcache">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="system/style/browser.css">
 	<script src="system/script/jquery.min.js"></script>
 	<script src="system/script/browser.js"></script>
@@ -10,14 +11,14 @@
 <body>
 	<div id="main">
 		<header>
-			<div id="input">
+			<form id="navigation">
 				<button id="btn_pre" class="nav"><</button>
 				<button id="btn_nex" class="nav">></button>
 				<input type="text" id="url" placeholder="Search or Enter URL">
-				<button id="btn_rl" class="nav">&#8635;</button>
-				<button class="go">Go</button>
+				<button id="stop" class="nav">&#8635;</button>
+				<button id="go" class="go">Go</button>
 				<button id="btn_add_t" class="nav">&#8801;</button>
-			</div>
+			</form>
 		</header>
 		<div id="container">
 			<iframe src="homepage.html" frameborder="0" id="b_iframe" name="b_iframe" mozbrowser></iframe>
@@ -41,6 +42,9 @@
 	</div>
 	<div id="loading-screen">
 		Browser
+	</div>
+	<div id="error">
+		Error
 	</div>
 </body>
 </html>
