@@ -24,15 +24,6 @@ function loadWebSite(website,mode){
 	}
 }
 
-function init(){
-	$("#loading-screen").delay(1000).fadeOut();
-	sidebar = false;
-	error=false;
-	n_mode=false;
-	f_mode=false;
-	historyData=[];
-}
-
 function sb_on(){
 	if(sidebar){
 		sidebar = false;
@@ -74,8 +65,6 @@ function fullscreenMode(){
 	}
 }
 
-
-
 function fullscreenOn(){
 	if (document.documentElement.requestFullscreen) {
 		document.documentElement.requestFullscreen();
@@ -98,6 +87,62 @@ function fullscreenOff(){
 	} else if (document.webkitExitFullscreen) {
 		document.webkitExitFullscreen();
 	}
+}
+
+function setBookmark(ttl1,url1){
+	Bexists=false;
+	for(i in bookmarksUrl){
+		if(url1==bookmarksUrl[i]) Bexists=true;
+	}
+	if(!Bexists){
+		bookmarksTitle.push(ttl1);
+		bookmarksUrl.push(url1);
+	}else{
+		alert("Already Bookmarked!");
+	}
+}
+
+function saveBookmark(){
+	sdcard.delete("bookmarksURL.cache");
+	sdcard.delete("bookmarksTitle.cache");
+	bm = new Blob([bookmarksUrl], {type: "text/plain"});
+	requestSet = sdcard.addNamed(bm, "bookmarksURL.cache");
+	bm = new Blob([bookmarksTitle], {type: "text/plain"});
+	requestSet = sdcard.addNamed(bm, "bookmarksTitle.cache");
+}
+
+function init(){
+	$("#loading-screen").delay(1000).fadeOut();
+	sidebar = false;
+	error=false;
+	n_mode=false;
+	f_mode=false;
+	historyData=[];
+	bookmarksTitle=[];
+	bookmarksUrl=[];
+
+	sdcard = navigator.getDeviceStorage("sdcard");
+	
+	/*
+	
+	requestGetURL = sdcard.get("bookmarksURL.cache");
+	requestGetURL.onsuccess = function(){
+		bookmarksUrl = this.result;
+	}
+	requestGetTitle = sdcard.get("bookmarksTitle.cache");
+	requestGetTitle.onsuccess = function(){
+		bookmarksTitle = this.result;
+	}
+
+	requestGetURL.onerror = function(){
+		bm = new Blob([bookmarksUrl], {type: "text/plain"});
+		requestSet = sdcard.addNamed(bm, "bookmarksURL.cache");
+		bm = new Blob([bookmarksTitle], {type: "text/plain"});
+		requestSet = sdcard.addNamed(bm, "bookmarksTitle.cache");
+	}
+
+	*/
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -136,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	browser.addEventListener("mozbrowsertitlechange", function( event ) {
-		var h_node={"title":event.detail,"urlValue":url.value};
+		h_node={"title":event.detail,"urlValue":url.value};
 		var exists = false;
 		for(i in historyData){
 			if(h_node.urlValue==historyData[i].urlValue){
@@ -212,6 +257,33 @@ document.addEventListener("DOMContentLoaded", function () {
 			loadWebSite(urls);
 			$("#hist").fadeOut();
 		})
+	})
+
+	$("#s_bo").click(function(){
+		sb_on();
+		$("#book ul").html("");
+		for(i in bookmarksUrl){
+			tt="<strong>"+bookmarksTitle[i]+"</strong>";
+			ur=bookmarksUrl[i];
+			$("#book ul").append("<li src='"+ur+"'>"+tt+"</li>");
+		}
+		$("#book").fadeIn();
+		saveBookmark();
+		$("#book ul li").click(function(){
+			urls=$(this).attr("src");
+			loadWebSite(urls);
+			$("#book").fadeOut();
+		})
+	})
+
+	$("#s_ab").click(function(){
+		t=h_node.title;
+		u=h_node.urlValue;
+		setBookmark(t,u)
+	})
+
+	$("#book #close").click(function(){
+		$("#book").fadeOut();
 	})
 
 	$("#hist #close").click(function(){

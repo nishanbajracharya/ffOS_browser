@@ -31,7 +31,7 @@ html,body{
 	z-index: 10;
 	box-shadow: 3px 0 5px rgba(0,0,0,0.2);
 }
-#hist{
+.preFull{
 	display: none;
 	position: absolute;
 	top:0;
@@ -43,10 +43,10 @@ html,body{
 	z-index: 11;
 	opacity: 0.95;
 }
-#hist p{
+.preFull p{
 	padding:5px;
 }
-#hist #close{
+.preFull #close{
 	border:none;
 	background: none;
 	font-weight: bolder;
@@ -54,17 +54,17 @@ html,body{
 	color: #fff;
 	float: right;
 }
-#hist #close:active{
+.preFull #close:active{
 	color: #48b;
 }
-#hist .list{
+.preFull .list{
 	height: calc(100% - 40px);
 	overflow-y: scroll;
 }
-#hist .list li{
+.preFull .list li{
 	text-overflow: ellipsis;
 }
-#hist .list li img{
+.preFull .list li img{
 	width: 20px;
 	margin-right:10px;
 	padding-top: 5px;
@@ -125,7 +125,7 @@ header form *{
 header input{
 	background: #fff;
 	border: none;
-	width: calc(100% - 167px);
+	width: calc(100% - 162px);
 	padding: 5px;
 	border-radius: 0;
 	border:1px solid #ccc;

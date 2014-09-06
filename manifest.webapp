@@ -1,6 +1,6 @@
 {
   "version": "0.1",
-  "name": "Browser",
+  "name": "FFOS Browser",
   "description": "Simple Browser",
   "launch_path": "/index.html",
   "icons": {
@@ -18,7 +18,9 @@
       "description": "Browser API"
     },
     "embed-apps": {},
-    "device-storage:apps":{ "access": "readwrite" },
-    "webapps-manage":{ }
+    "device-storage:sdcard": {
+      "access": "readwrite"
+    },
+    "webapps-manage": {}
   }
 }
