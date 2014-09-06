@@ -12,12 +12,12 @@
 	<div id="main">
 		<header>
 			<form id="navigation">
-				<button id="btn_pre" class="nav"><</button>
-				<button id="btn_nex" class="nav">></button>
+				<button id="btn_pre" class="nav arrow"><img src="system/images/left.png" alt=""></button>
+				<button id="btn_nex" class="nav arrow"><img src="system/images/right.png" alt=""></button>
+				<button id="stop" class="nav arrow"><img src="system/images/reload.png"></button>
 				<input type="text" id="url" placeholder="Search or Enter URL">
-				<button id="stop" class="nav">&#8635;</button>
 				<button id="go" class="go">Go</button>
-				<button id="btn_add_t" class="nav">&#8801;</button>
+				<button id="btn_add_t" class="nav"><img src="system/images/menu.png" alt=""></button>
 			</form>
 		</header>
 		<div id="container">
@@ -32,12 +32,12 @@
 			<li id="s_bo">Bookmarks</li>
 			<li id="s_hi">History</li>
 			<li id="s_pr">Preferences</li>
-			<!--<li id="s_nm">Night Mode<span>OFF</span></li>-->
+			<li id="s_nm">Dark Theme<span>OFF</span></li>
 			<li id="s_fm">Fullscreen Mode<span>OFF</span></li>
 		</ul>
 	</div>
 	<div id="hist">
-		<strong><p>History<button id="close">x</button></p></strong>
+		<strong><p>History <button style="color:#eee" class="nav" id="clrHst">Clear</button><button id="close">x</button></p></strong>
 		<ul class="list"></ul>
 	</div>
 	<div id="loading-screen">

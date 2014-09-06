@@ -12,5 +12,71 @@ html,body{
 	width: 100%;
 	height: 100%;
 	background: #fafafa;
+	padding: 10px;
+}
+header{
+	height: 20px;
+	padding: 10px;
+	background: #fafafa;
+	text-align: center;
+	line-height: 20px;
+	font-weight: bolder;
+	border-bottom:1px solid #ccc;
+	border-top:3px solid #48b;
+}
+#h_page{
+	width: 100%;
+	height: calc(100% - 41px);
+	padding-top: 10px;
+}
+#h_page ul{
+	list-style: none;
+}
+#h_page ul li{
+	margin:10px;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	border: 1px solid #bbb;
+}
+#h_page ul li img{
+	width: 100%;
+	height: 100%;
+}
+#box{
+	width: calc(95% - 25px);
+	height: calc(95% - 25px);
+	padding: 10px;
+	border-radius: 3px;
+	background: #fff;
+	border: 1px solid #999;
+	text-align: justify;
+	overflow: hidden;
+}
+#box p{
+	position: relative;
+	left: -10px;
+	top:-10px;
+	width: calc(100% + 20px);
+	background: #999;
+	color: #fff;
+	padding: 10px;
+}
+#box ul li{
+	margin-left: 20px;
+}
+#box button{
+	outline: none;
+	border-radius: 0;
+	margin: 10px;
+}
+.option{
+	background: #efefef;
+	border:1px solid #ddd;
 	padding: 5px;
+}
+.option:active{
+	background: #49b;
+	color: #fff;
+	border: 1px solid #38a;
 }

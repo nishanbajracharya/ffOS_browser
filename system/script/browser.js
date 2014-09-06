@@ -25,9 +25,12 @@ function loadWebSite(website,mode){
 }
 
 function init(){
-	$("#loading-screen").delay(3000).fadeOut();
+	$("#loading-screen").delay(1000).fadeOut();
 	sidebar = false;
 	error=false;
+	n_mode=false;
+	f_mode=false;
+	historyData=[];
 }
 
 function sb_on(){
@@ -39,6 +42,61 @@ function sb_on(){
 		sidebar = true;
 		$("#main").animate({"left":"-70%"},500)
 		$("#sidebar").animate({"left":"30%"},500)
+	}
+}
+
+function darkThemeMode(){
+	if(n_mode){
+		n_mode=false;
+		$("#nmInject").remove();$("#s_nm span").html("OFF");
+	}else{
+		n_mode=true;
+		$("head").append("<link rel='stylesheet' href='system/style/browser_nm.css' id='nmInject'>");
+		$("#s_nm span").html("ON");
+	}
+}
+
+function purgeData(){
+	browser.purgeHistory();
+	history=[];
+	$("#hist ul").html("");
+}
+
+function fullscreenMode(){
+	if(f_mode){
+		f_mode = false;
+		$("#s_fm span").html("OFF");
+		fullscreenOff();
+	}else{
+		f_mode = true;
+		$("#s_fm span").html("ON");
+		fullscreenOn();
+	}
+}
+
+
+
+function fullscreenOn(){
+	if (document.documentElement.requestFullscreen) {
+		document.documentElement.requestFullscreen();
+	} else if (document.documentElement.msRequestFullscreen) {
+		document.documentElement.msRequestFullscreen();
+	} else if (document.documentElement.mozRequestFullScreen) {
+		document.documentElement.mozRequestFullScreen();
+	} else if (document.documentElement.webkitRequestFullscreen) {
+		document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+	}
+}
+
+function fullscreenOff(){
+	if (document.exitFullscreen) {
+		document.exitFullscreen();
+	} else if (document.msExitFullscreen) {
+		document.msExitFullscreen();
+	} else if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen();
+	} else if (document.webkitExitFullscreen) {
+		document.webkitExitFullscreen();
 	}
 }
 
@@ -56,15 +114,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	//Browser Events
 	browser.addEventListener("mozbrowserloadstart", function( event ) {
-		stop.innerHTML="x"
+		stop.innerHTML="<img src='system/images/cancel.png'>"
 		$("#loading").fadeIn();
 	});
 
 	browser.addEventListener("mozbrowserloadend", function( event ) {
-		stop.innerHTML="&#8635;"
+		stop.innerHTML="<img src='system/images/reload.png'>"
 		$("#loading").fadeOut();
 		if(url.value.substr(0,6)=="app://") url.value="";
-		if(error) url.value=temp;
+		//if(error) url.value=temp;
 	});
 
 	browser.addEventListener('mozbrowserlocationchange', function (event) {
@@ -75,6 +133,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		temp=url.value;
 		loadWebSite("error.html",1);
 		error=true;
+	});
+
+	browser.addEventListener("mozbrowsertitlechange", function( event ) {
+		var h_node={"title":event.detail,"urlValue":url.value};
+		var exists = false;
+		for(i in historyData){
+			if(h_node.urlValue==historyData[i].urlValue){
+				exists = true;
+				break;
+			}else{
+				exists=false;
+			}
+		}
+		if(!exists){
+			if(url.value.substr(0,6)!="app://")	historyData.push(h_node);
+		}
 	});
 
 	//Load Events
@@ -91,10 +165,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	//Stop Events
 	stop.addEventListener("touchend", function () {
-		if(stop.innerHTML=="x"){
+		if(stop.innerHTML=="<img src='system/images/cancel.png'>"){
 			browser.stop();
 		}else{
-			browser.reload();
+			if(url.value!="") browser.reload();
 		}
 	});
 
@@ -113,5 +187,43 @@ document.addEventListener("DOMContentLoaded", function () {
 	$("#s_sp").click(function(){
 		loadWebSite("homepage.html",1);
 		sb_on();
+	})
+	$("#s_nm").click(function(){
+		darkThemeMode();
+		sb_on();
+	})
+	$("#s_fm").click(function(){
+		fullscreenMode();
+		sb_on();
+	})
+	$("#s_hi").click(function(){
+		sb_on();
+		$("#hist ul").html("");
+		for(i in historyData){
+			if(i>-1){
+				tt="<strong>"+historyData[historyData.length-i-1].title+"</strong>";
+				ur=historyData[historyData.length-i-1].urlValue;
+				$("#hist ul").append("<li src='"+ur+"'>"+tt+"<br>"+ur+"</li>");
+			}
+		}
+		$("#hist").fadeIn();
+		$("#hist ul li").click(function(){
+			urls=$(this).attr("src");
+			loadWebSite(urls);
+			$("#hist").fadeOut();
+		})
+	})
+
+	$("#hist #close").click(function(){
+		$("#hist").fadeOut();
+	})
+
+	//Misc
+	$("input").focus(function(){
+		$("#s_fm span").html("OFF");
+		f_mode=false;
+	})
+	$("#clrHst").click(function(){
+		purgeData();
 	})
 });

@@ -5,11 +5,30 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="system/style/startpage.css">
 	<script src="system/script/jquery.min.js"></script>
-	<script src="system/script/browser.js"></script>
+	<!--<script src="system/script/browser.js"></script>-->
+	
 </head>
 <body>
 	<div id="start_page">
-	Error
+		<div id="box">
+			<p><strong>Seems like we ran into an error!</strong></p>
+			This may be due to a number of causes.
+			<ul>
+				<li>Your internet connection is down. Check if you have WI-FI or 2G/3G enabled.</li>
+				<li>The page you're trying to reach to is not responding. This may be temporary. Try again later.</li>
+			</ul>
+			<button id="agn" class="option">Try Again</button>
+			<button id="stp" class="option">Go to Start Page</button>
+		</div>
+		<script>
+			$("#agn").click(function(){
+				window.history.back()
+			})
+			$("#stp").click(function(){
+				console.log("startpage")
+				window.history.go(1-history.length);
+			})
+		</script>
 	</div>
 </body>
 </html>

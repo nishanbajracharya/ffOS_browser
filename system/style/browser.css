@@ -61,6 +61,9 @@ html,body{
 	height: calc(100% - 40px);
 	overflow-y: scroll;
 }
+#hist .list li{
+	text-overflow: ellipsis;
+}
 #hist .list li img{
 	width: 20px;
 	margin-right:10px;
@@ -107,6 +110,8 @@ ul.list li span{
 	100% { left: 120%; }
 }
 header{
+	position: relative;
+	top:-2px;
 	background: #efefef;
 	padding: 5px;
 	border-bottom: 1px solid #ccc;
@@ -120,28 +125,39 @@ header form *{
 header input{
 	background: #fff;
 	border: none;
-	width: calc(100% - 147px);
+	width: calc(100% - 167px);
 	padding: 5px;
 	border-radius: 0;
 	border:1px solid #ccc;
-	padding-right: 15px;
 }
 header input:focus{
 	border:1px solid #01a2e8;
 }
-header button{
+button{
 	outline: none;
 	border: none;
 	border-radius: 0;
 	font-weight: bolder;
 	background: none;
 }
+header button img{
+	margin-top: 5px;
+	width: 20px;
+	margin-bottom: -5px;
+}
+header button#btn_add_t img{
+	margin-top: 0;
+	margin-bottom: 0;
+}
 header button.nav{
 	padding: 3px;
 	width: 20px;
 }
-header button.nav:active{
+button.nav:active{
 	color: #01a2e8;
+}
+header button.arrow:active img{
+	background: #01a2e8;
 }
 header button.go{
 	padding: 3px;
@@ -157,11 +173,6 @@ header button.go:active{
 	color: #fff;
 	border: 1px solid #38a;
 }
-header button#stop{
-	position: relative;
-	left: -24px;
-	margin-right: -24px;
-}
 header button#btn_add_t{
 	position: relative;
 	top:5px;
@@ -171,8 +182,10 @@ header button#btn_add_t{
 	font-weight: normal; 
 }
 #container{
+	position: relative;
+	top:-2px;
 	width: 100%;
-	height: calc(100% - 40px);
+	height: calc(100% - 38px);
 }
 #container iframe{
 	width: 100%;

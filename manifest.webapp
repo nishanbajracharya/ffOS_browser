@@ -16,6 +16,9 @@
   "permissions": {
     "browser": {
       "description": "Browser API"
-    }
+    },
+    "embed-apps": {},
+    "device-storage:apps":{ "access": "readwrite" },
+    "webapps-manage":{ }
   }
 }
