@@ -1,5 +1,5 @@
 function checkUrl(urlReg){
-	var urlCheckTest = urlReg.match(/^((http|https|ftp)?:\/\/)?([\a-zA-Z0-9\.-]+)\.([a-z\.]{2,6})(\/)?([\a-zA-Z0-9\/+=%&_\.~?\-]+)?$/)
+	var urlCheckTest = urlReg.match(/^((http|https|ftp)?:\/\/)?([\a-zA-Z0-9\.-]+)\.([a-z\.]{2,6})(\/)?([\a-zA-Z0-9\/#+=%&_\.~?\-]+)?$/)
 	if(urlCheckTest==null){
 		return false;
 	}else{
@@ -16,7 +16,7 @@ function loadWebSite(website,mode){
 				if(website.substr(0,7)!="http://" && website.substr(0,8)!="https://" && website.substr(0,6)!="ftp://") website="http://"+website;
 				browser.setAttribute("src", website);
 			}else{
-				browser.setAttribute("src", "http://www.google.com/search?q="+website);
+				browser.setAttribute("src", searchEngine[sEID].url+website);
 			}
 		}
 	}else{
@@ -117,7 +117,12 @@ function init(){
 	error=false;
 	n_mode=false;
 	f_mode=false;
+	
+	searchEngine = [{"name":"Google","url":"http://www.google.com/search?q="}]
+	sEID = 0;
+
 	historyData=[];
+
 	bookmarksTitle=[];
 	bookmarksUrl=[];
 
@@ -282,12 +287,30 @@ document.addEventListener("DOMContentLoaded", function () {
 		setBookmark(t,u)
 	})
 
+	$("#s_pr").click(function(){
+		sb_on();
+		$("#preferences").fadeIn();
+	})
+
+	$("#s_at").click(function(){
+		sb_on();
+		$("#about").fadeIn();
+	})
+
 	$("#book #close").click(function(){
 		$("#book").fadeOut();
 	})
 
 	$("#hist #close").click(function(){
 		$("#hist").fadeOut();
+	})
+
+	$("#preferences #close").click(function(){
+		$("#preferences").fadeOut();
+	})
+
+	$("#about #close").click(function(){
+		$("#about").fadeOut();
 	})
 
 	//Misc
@@ -297,5 +320,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	})
 	$("#clrHst").click(function(){
 		purgeData();
+	})
+	$("#l_gnu").click(function(){
+		$("#about").fadeOut();
+		loadWebSite("http://docs.oracle.com/cd/E22471_01/html/E26049/appendix.html#50651147_24646");
 	})
 });

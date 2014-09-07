@@ -1,12 +1,12 @@
 {
   "version": "0.1",
-  "name": "FFOS Browser",
-  "description": "Simple Browser",
+  "name": "FFBrowser",
+  "description": "Minimalistic Web Browser For Boot2Gecko",
   "launch_path": "/index.html",
   "icons": {
-    "16": "/icon-128.png",
-    "48": "/icon-128.png",
-    "128": "/icon-128.png"
+    "16": "/icon.png",
+    "48": "/icon.png",
+    "128": "/icon.png"
   },
   "developer": {
     "name": "Nishan Bajracharya"

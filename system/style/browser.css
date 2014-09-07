@@ -3,6 +3,12 @@
 	padding:0;
 	font-family: sans-serif;
 	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	text-decoration: none;
 }
 html,body{
 	width: 100%;
@@ -42,6 +48,7 @@ html,body{
 	color: #fff;
 	z-index: 11;
 	opacity: 0.95;
+	overflow-x:hidden; 
 }
 .preFull p{
 	padding:5px;
@@ -71,6 +78,17 @@ html,body{
 	margin-top: -5px;
 	margin-bottom:-5px;
 }
+#preferences,#about{
+	background: #efefef;
+	color: #222;
+	opacity: 1;
+}
+#preferences #close,#about #close{
+	color: #222;
+}
+#about img{
+	width: 100px;
+}
 #sidebar{
 	position: absolute;
 	top:0;
@@ -84,9 +102,13 @@ html,body{
 ul.list{
 	list-style: none;
 }
+ul.list a{
+	color: #222;
+}
 ul.list li{
 	padding: 9px;
 	border-bottom: 1px solid #555;
+	text-align: left;
 }
 ul.list li:active{
 	background: #49b;

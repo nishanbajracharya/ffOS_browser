@@ -28,6 +28,7 @@ header{
 	width: 100%;
 	height: calc(100% - 41px);
 	padding-top: 10px;
+	background: #fff;
 }
 #h_page ul{
 	list-style: none;
